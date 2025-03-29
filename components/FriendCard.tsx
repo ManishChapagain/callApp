@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, ImageBackground, Animated } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 import { GestureDetector } from "react-native-gesture-handler";
 import { styles } from "@/styles/homeStyles";
 import { TalkButton } from "@/components/TalkButton";
 import { ConnectedUI } from "@/components/ConnectedUI";
 import { CallControls } from "@/components/CallControls";
+import Animated from "react-native-reanimated";
 
 export const FriendCard = ({
   friend,

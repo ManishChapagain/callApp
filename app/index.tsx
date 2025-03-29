@@ -129,16 +129,20 @@ export default function HomeScreen() {
   /** Drag Gesture */
   const dragGesture = Gesture.Pan()
     .onChange((event) => {
-      translateY.value = event.translationY;
+      if (isConnected) {
+        if (event.translationY < 0) {
+          translateY.value = event.translationY;
+        }
 
-      // Check if dragged up by 20px
-      if (event.translationY < -20) {
-        runOnJS(setIsDraggedUp)(true);
-      } else {
-        runOnJS(setIsDraggedUp)(false);
+        // Check if dragged up by 50px
+        if (event.translationY < -50) {
+          runOnJS(setIsDraggedUp)(true);
+        } else {
+          runOnJS(setIsDraggedUp)(false);
+        }
       }
     })
-    .onFinalize(() => {
+    .onEnd(() => {
       translateY.value = withSpring(0);
     });
 
