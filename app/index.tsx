@@ -164,6 +164,12 @@ export default function HomeScreen() {
     }
   }, [isHoldPressed, isDraggedUp, isConnected]);
 
+  useEffect(() => {
+    if (!isConnected) {
+      translateY.value = withSpring(0);
+    }
+  }, [isConnected]);
+
   const handleEndCall = () => {
     setInCall(false);
   };
